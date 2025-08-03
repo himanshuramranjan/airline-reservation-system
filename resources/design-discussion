@@ -1,0 +1,3 @@
+> Payment and other complimentary services are not added to keep the design simple
+
+> BookingService.bookTicket() can be further improved for a proper multi-threading handling (Ref : BookMyShow)
