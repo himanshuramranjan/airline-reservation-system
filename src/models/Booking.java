@@ -8,15 +8,15 @@ import java.util.UUID;
 
 public class Booking {
     private final String bookingId;
-    private final Passenger passenger;
+    private final List<Passenger> passengers;
     private final Flight flight;
     private final List<Seat> seats;
     private final LocalDateTime bookingTime;
     private BookingStatus status;
 
-    public Booking(Passenger passenger, Flight flight, List<Seat> seats) {
+    public Booking(List<Passenger> passengers, Flight flight, List<Seat> seats) {
         this.bookingId = UUID.randomUUID().toString();
-        this.passenger = passenger;
+        this.passengers = passengers;
         this.flight = flight;
         this.seats = seats;
         this.status = BookingStatus.CONFIRMED;
@@ -32,8 +32,8 @@ public class Booking {
         return bookingId;
     }
 
-    public Passenger getPassenger() {
-        return passenger;
+    public List<Passenger> getPassenger() {
+        return passengers;
     }
 
     public Flight getFlight() {
