@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class BookingService {
-    public synchronized Booking bookTicket(Passenger passenger, Flight flight, SeatClass seatClass, int numSeats) {
+    public synchronized Booking bookTicket(List<Passenger> passengers, Flight flight, SeatClass seatClass, int numSeats) {
         List<Seat> availableSeats = flight.getAvailableSeats(seatClass);
         if(availableSeats.size() < numSeats) return null;
 
@@ -27,8 +27,6 @@ public class BookingService {
             return null;
         }
 
-        Booking booking = new Booking(passenger, flight, seatsToBook);
-        passenger.addBooking(booking);
-        return booking;
+        return new Booking(passengers, flight, seatsToBook);
     }
 }
