@@ -16,9 +16,9 @@ public class FlightSearchService {
 
     public List<Flight> searchFlights(Airport source, Airport destination, LocalDate date) {
         return flights.stream()
-                .filter(f -> f.getRoute().getSource().equals(source) &&
-                        f.getRoute().getDestination().equals(destination) &&
-                        f.getDepartureTime().toLocalDate().equals(date))
+                .filter(f -> f.route().source().equals(source) &&
+                        f.route().destination().equals(destination) &&
+                        f.departureTime().toLocalDate().equals(date))
                 .collect(Collectors.toList());
     }
 }
