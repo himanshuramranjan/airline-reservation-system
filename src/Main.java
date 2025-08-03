@@ -31,6 +31,7 @@ public class Main {
         BookingService bookingService = new BookingService();
 
         Passenger john = new Passenger("U1", "John Doe", "john@example.com");
+        Passenger sussie = new Passenger("U2", "Sussie Doe", "sussie@example.com");
 
         List<Flight> results = flightSearchService.searchFlights(delhi, mumbai, LocalDate.of(2025, 4, 22));
         if (results.isEmpty()) {
@@ -38,7 +39,7 @@ public class Main {
         } else {
             System.out.println("Flights found: " + results.size());
             Flight selectedFlight = results.get(0);
-            Booking booking = bookingService.bookTicket(john, selectedFlight, SeatClass.ECONOMY, 2);
+            Booking booking = bookingService.bookTicket(List.of(john, sussie), selectedFlight, SeatClass.ECONOMY, 2);
 
             if (booking != null) {
                 System.out.println("Booking successful! ID: " + booking.getBookingId());
